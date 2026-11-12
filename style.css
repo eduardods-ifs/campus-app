@@ -1,0 +1,249 @@
+:root {
+  --verde: #0B8F4D;
+  --verde-escuro: #076b39;
+  --azul: #14365C;
+  --amarelo: #FFC93C;
+  --fundo: #f4f6fb;
+  --texto: #1d2433;
+  --cinza: #6b7385;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding-bottom: 90px;
+}
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(135deg, var(--verde), var(--verde-escuro));
+  color: white;
+  padding: calc(16px + env(safe-area-inset-top)) 20px 18px;
+  border-radius: 0 0 22px 22px;
+}
+
+.ola {
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.topo h1 {
+  font-size: 1.7rem;
+}
+
+.selo-app {
+  display: none;
+  font-size: 0.7rem;
+  background: var(--amarelo);
+  color: var(--texto);
+  padding: 2px 8px;
+  border-radius: 20px;
+  vertical-align: middle;
+}
+.tela {
+  display: none;
+  padding: 20px;
+  scroll-margin-top: 140px;
+}
+
+.tela:target {
+  display: block;
+}
+
+main:not(:has(.tela:target)) #inicio {
+  display: block;
+}
+
+.titulo-tela {
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+}
+
+.titulo-secao {
+  margin: 24px 0 12px;
+  color: var(--cinza);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 4px 14px rgba(20, 54, 92, 0.08);
+}
+
+.destaque {
+  background: var(--azul);
+  color: white;
+}
+
+.destaque h2 {
+  font-size: 1.4rem;
+  margin: 4px 0;
+}
+
+.rotulo {
+  color: var(--amarelo);
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.aviso {
+  margin-bottom: 12px;
+}
+
+.aviso p {
+  color: var(--cinza);
+}
+
+.etiqueta {
+  display: inline-block;
+  background: var(--verde);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+
+.etiqueta.azul {
+  background: var(--azul);
+}
+.dia {
+  background: white;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  padding: 14px 16px;
+}
+
+.dia summary {
+  font-weight: bold;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dia summary::-webkit-details-marker {
+  display: none;
+}
+
+.dia summary::after {
+  content: "+";
+  color: var(--verde);
+  font-size: 1.2rem;
+}
+
+.dia[open] summary::after {
+  content: "−";
+}
+
+.dia ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.dia li {
+  padding: 6px 0;
+  border-top: 1px solid var(--fundo);
+}
+
+.dia b {
+  color: var(--verde);
+  margin-right: 8px;
+}
+.grade-cardapio {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.prato {
+  text-align: center;
+}
+
+.prato span {
+  font-size: 2.2rem;
+}
+
+.prato p {
+  color: var(--cinza);
+  font-size: 0.9rem;
+}
+
+.carteirinha {
+  background: linear-gradient(135deg, var(--verde), var(--azul));
+  color: white;
+  border-radius: 22px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.foto {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: white;
+  font-size: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.matricula {
+  margin-top: 10px;
+  font-family: 'Courier New', monospace;
+  opacity: 0.85;
+}
+.abas {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  background: white;
+  border-top: 1px solid #e3e6ee;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 10;
+}
+
+.abas a {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  color: var(--cinza);
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+
+.abas span {
+  display: block;
+  font-size: 1.4rem;
+}
+
+body:has(#inicio:target) .abas a[href="#inicio"],
+body:has(#horario:target) .abas a[href="#horario"],
+body:has(#cardapio:target) .abas a[href="#cardapio"],
+body:has(#perfil:target) .abas a[href="#perfil"],
+body:not(:has(.tela:target)) .abas a[href="#inicio"] {
+  color: var(--verde);
+  font-weight: bold;
+}
